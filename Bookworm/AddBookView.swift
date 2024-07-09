@@ -16,6 +16,7 @@ struct AddBookView: View {
     @State private var genre = ""
     @State private var review = ""
     @State private var rating = 3
+    @State private var date = Date.now
     
     private var isNotValid: Bool {
         title.isEmpty || author.isEmpty || review.isEmpty
@@ -43,7 +44,8 @@ struct AddBookView: View {
                 }
                 Section {
                     Button("Save") {
-                        let newBook = Book(title: title, author: author, genre: genre, review: review, rating: rating)
+                        let newBook = Book(title: title, author: author, genre: genre, review: review, rating: rating,
+                                           date: Date.now)
                         modelContext.insert(newBook)
                         dismiss()
                     }
